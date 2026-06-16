@@ -4,6 +4,8 @@ public class Typ {
 
     private int id; // Attribute
     private String bezeichnung;
+    private int ausleihdauer;
+    private int umfang;
 
 
     public Typ(int id, String bezeichnung) {    // Konstruktoren
@@ -40,6 +42,16 @@ public class Typ {
 
     @Override
     public String toString() {
-        return bezeichnung;
+        if (id == 1) {
+            return bezeichnung + ", " + umfang + " Minuten";
+        } else if (id == 2) {
+            return bezeichnung + ", " + umfang + " Seiten";
+        } else if (id == 3) {
+            return bezeichnung + ", " + umfang + " Minuten";
+        } else  if (id == 4) {
+            return bezeichnung + ", " + umfang + " Stunden";
+        } else {
+            return bezeichnung + ", " + umfang + " Minuten";
+        }
     }
 }
