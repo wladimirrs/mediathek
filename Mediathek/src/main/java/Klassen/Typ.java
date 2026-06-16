@@ -2,8 +2,8 @@ package Klassen;
 
 public class Typ {
 
-    int id; // Attribute
-    String bezeichnung;
+    private int id; // Attribute
+    private String bezeichnung;
 
 
     public Typ(int id, String bezeichnung) {    // Konstruktoren
@@ -35,5 +35,11 @@ public class Typ {
 
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
+    }
+
+
+    @Override
+    public String toString() {
+        return bezeichnung;
     }
 }
