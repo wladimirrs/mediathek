@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TypController">
 
+    <children>
+
+        <TableView fx:id="tblTyp" layoutX="69.0" layoutY="102.0" prefHeight="600" prefWidth="800.0">
+
+            <columns>
+                <TableColumn fx:id="colId" text="Id" prefWidth="80"/>
+                <TableColumn fx:id="colBezeichnung" text="Bezeichnung" prefWidth="80"/>
+                <TableColumn fx:id="colAusleihdauer" text="Ausleihdauer" prefWidth="80"/>
+                <TableColumn fx:id="colUmfang" text="Umfang" prefWidth="80"/>
+            </columns>
+
+        </TableView>
+
+        <TextField fx:id="txtEingabe" promptText="Suche" layoutX="220.0" layoutY="59.0" prefWidth="200.0"/>
+        <TextField fx:id="txtId" promptText="ID (beim Ändern)" layoutX="69.0" layoutY="729.0" prefHeight="26.0" prefWidth="156.0" />
+        <TextField fx:id="txtBezeichnung" promptText="Bezeichnung" layoutX="69.0" layoutY="756.0" prefHeight="26.0" prefWidth="156.0" />
+        <TextField fx:id="txtAusleihdauer" promptText="Ausleihdauer" layoutX="239.0" layoutY="729.0" prefHeight="26.0" prefWidth="156.0" />
+        <TextField fx:id="Umfang" promptText="Umfang" layoutX="239.0" layoutY="756.0" prefHeight="26.0" prefWidth="156.0" />
+
+        <Label layoutX="69.0" layoutY="59.0" text="Artikeltypen">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+
+        <Button layoutX="430.0" layoutY="59.0" text="Einfügen" onAction="#einfuegen"/>
+        <Button layoutX="520.0" layoutY="59.0" text="Ändern" onAction="#aendern"/>
+        <Button layoutX="600.0" layoutY="59.0" text="Löschen" onAction="#loeschen"/>
+        <Button layoutX="680.0" layoutY="59.0" text="Suche" onAction="#suchen"/>
+
+    </children>
 </AnchorPane>
