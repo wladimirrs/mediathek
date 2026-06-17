@@ -8,10 +8,25 @@ public class Typ {
     private int umfang;
 
 
-    public Typ(int id, String bezeichnung) {    // Konstruktoren
+    public Typ(int id, String bezeichnung, int ausleihdauer, int umfang) {    // Konstruktoren
         this.id = id;
         this.bezeichnung = bezeichnung;
+        this.ausleihdauer = ausleihdauer;
+        this.umfang = umfang;
     }
+
+    public Typ(String bezeichnung, int ausleihdauer, int umfang) {
+        this.bezeichnung = bezeichnung;
+        this.ausleihdauer = ausleihdauer;
+        this.umfang = umfang;
+    }
+
+    public Typ(String bezeichnung, int umfang) {    // Konstruktoren
+        this.bezeichnung = bezeichnung;
+        this.umfang = umfang;
+    }
+
+
 
     public Typ(String bezeichnung) {
         this.bezeichnung = bezeichnung;
@@ -31,6 +46,10 @@ public class Typ {
         return bezeichnung;
     }
 
+    public int getAusleihdauer() { return  ausleihdauer; }
+
+    public int getUmfang() { return umfang; }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -39,6 +58,9 @@ public class Typ {
         this.bezeichnung = bezeichnung;
     }
 
+    public void setAusleihdauer(int ausleihdauer) {this.ausleihdauer = ausleihdauer; }
+
+    public void setUmfang(int umfang) {this.umfang = umfang; }
 
     @Override
     public String toString() {
