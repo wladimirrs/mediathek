@@ -13,8 +13,8 @@ import java.util.List;
 
 public class BestellungDAO {
 
-    public static List<Bestellung> getAll() {   // Suche
-        List<Bestellung> list = new ArrayList<>();
+    public static ArrayList<Bestellung> getAll() {   // Suche
+        ArrayList<Bestellung> list = new ArrayList<>();
         String sql = "SELECT b.*, " +
         "k.mediatheknummer, k.nachname, k.vorname, " +
                 "a.titel" +

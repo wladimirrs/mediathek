@@ -1,8 +1,10 @@
 package Controller;
 
 import DAO.ArtikelDAO;
+import DAO.TypenDAO;
 import Klassen.Artikel;
 import Klassen.Typ;
+import Service.ModelService;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -45,6 +47,7 @@ public class ArtikelController implements Observer {
     private final ModelService service = new ModelService();
     @FXML
     public void initialize() {
+        cbTyp.setItems(FXCollections.observableArrayList(TypenDAO.getAll()));
         colId.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getId()).asObject());
         colTyp.setCellValueFactory(data -> new SimpleObjectProperty<>(data.getValue().getTyp()));
         colTitel.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getTitel()));
@@ -70,14 +73,14 @@ public class ArtikelController implements Observer {
                 Boolean.parseBoolean(txtAbachtzehn.getText()),
                 txtGenre.getText()
         );
-        service.einfuegen(a);
+        service.aeinfuegen(a);
     }
 
     @FXML
     void loeschen(ActionEvent event) {              // gewählten Datensatz löschen
         Artikel selected = tblArtikel.getSelectionModel().getSelectedItem();
         if (selected != null) {
-            service.loeschen(selected.getId());
+            service.aloeschen(selected.getId());
         }
     }
 
@@ -90,7 +93,7 @@ public class ArtikelController implements Observer {
                 Boolean.parseBoolean(txtAbachtzehn.getText()),
                 txtGenre.getText()
         );
-        service.aendern(a);
+        service.aaendern(a);
     }
 
     @FXML

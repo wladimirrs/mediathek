@@ -11,8 +11,8 @@ import java.util.List;
 
 public class KundenDAO {
 
-    public static List<Kunde> getAll() {    // Suche
-        List<Kunde> list = new ArrayList<>();
+    public static ArrayList<Kunde> getAll() {    // Suche
+        ArrayList<Kunde> list = new ArrayList<>();
         String sql = "SELECT * FROM Kunden";
         try (Connection con = DB.getInstance().getConnection();
              PreparedStatement ps = con.prepareStatement(sql);

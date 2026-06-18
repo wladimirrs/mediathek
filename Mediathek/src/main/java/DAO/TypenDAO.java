@@ -12,8 +12,8 @@ import java.util.List;
 
 public class TypenDAO {
 
-    public static List<Typ> getAll() {
-        List<Typ> list = new ArrayList<>();
+    public static ArrayList<Typ> getAll() {
+        ArrayList<Typ> list = new ArrayList<>();
         String sql = "SELECT * FROM typen";
         try (Connection con = DB.getInstance().getConnection();
              PreparedStatement ps = con.prepareStatement(sql);

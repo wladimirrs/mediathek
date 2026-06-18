@@ -2,6 +2,7 @@ package Controller;
 
 import DAO.TypenDAO;
 import Klassen.Typ;
+import Service.ModelService;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -63,14 +64,14 @@ public class TypenController implements Observer {
                 Integer.parseInt(txtAusleihdauer.getText()),
                 Integer.parseInt(txtUmfang.getText())
         );
-        service.einfuegen(t);
+        service.teinfuegen(t);
     }
 
     @FXML
     void loeschen(ActionEvent event) {              // gewählten Datensatz löschen
         Typ selected = tblTyp.getSelectionModel().getSelectedItem();
         if (selected != null) {
-            service.loeschen(selected.getId());
+            service.tloeschen(selected.getId());
         }
     }
 
@@ -82,7 +83,7 @@ public class TypenController implements Observer {
                 Integer.parseInt(txtAusleihdauer.getText()),
                 Integer.parseInt(txtUmfang.getText())
         );
-        service.aendern(t);
+        service.taendern(t);
     }
 
     @FXML

@@ -1,11 +1,12 @@
 package Controller;
 
+import DAO.ArtikelDAO;
 import DAO.BestellungDAO;
+import DAO.KundenDAO;
 import Klassen.Artikel;
 import Klassen.Bestellung;
 import Klassen.Kunde;
-import Klassen.Typ;
-import javafx.beans.property.SimpleBooleanProperty;
+import Service.ModelService;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -46,6 +47,8 @@ public class BestellungController implements Observer {
     private final ModelService service = new ModelService();
     @FXML
     public void initialize() {
+        cbKundenId.setItems(FXCollections.observableArrayList(KundenDAO.getAll()));
+        cbArtikelId.setItems(FXCollections.observableArrayList(ArtikelDAO.getAll()));
         colId.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getId()).asObject());
         colKundenId.setCellValueFactory(data -> new SimpleObjectProperty<>(data.getValue().getKunde()));
         colArtikelId.setCellValueFactory(data -> new SimpleObjectProperty<>(data.getValue().getArtikel()));
@@ -71,14 +74,14 @@ public class BestellungController implements Observer {
                 txtVon.getText(),
                 txtBis.getText()
         );
-        service.einfuegen(b);
+        service.beinfuegen(b);
     }
 
     @FXML
     void loeschen(ActionEvent event) {              // gewählten Datensatz löschen
         Bestellung selected = tblBestellung.getSelectionModel().getSelectedItem();
         if (selected != null) {
-            service.loeschen(selected.getId());
+            service.bloeschen(selected.getId());
         }
     }
 
@@ -91,7 +94,7 @@ public class BestellungController implements Observer {
                 txtVon.getText(),
                 txtBis.getText()
         );
-        service.aendern(b);
+        service.baendern(b);
     }
 
     @FXML

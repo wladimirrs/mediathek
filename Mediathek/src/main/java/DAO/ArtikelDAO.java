@@ -12,8 +12,8 @@ import java.util.List;
 
 public class ArtikelDAO {
 
-    public static List<Artikel> getAll() {  // Suche
-        List<Artikel> list = new ArrayList<>();
+    public static ArrayList<Artikel> getAll() {  // Suche
+        ArrayList<Artikel> list = new ArrayList<>();
         String sql = "SELECT a.*, " +
                 "t.bezeichnung, t.umfang" +
                 " FROM artikel a LEFT JOIN typen t ON a.typ = t.id ";

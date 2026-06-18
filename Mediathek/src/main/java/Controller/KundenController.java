@@ -2,6 +2,7 @@ package Controller;
 
 import DAO.KundenDAO;
 import Klassen.Kunde;
+import Service.ModelService;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -83,14 +84,14 @@ public class KundenController implements Observer {
                 txtOrt.getText(),
                 txtGeburtsdatum.getText()
         );
-        service.einfuegen(k);
+        service.keinfuegen(k);
     }
 
     @FXML
     void loeschen(ActionEvent event) {              // gewählten Datensatz löschen
         Kunde selected = tblKunde.getSelectionModel().getSelectedItem();
         if (selected != null) {
-            service.loeschen(selected.getId());
+            service.kloeschen(selected.getId());
         }
     }
 
@@ -107,7 +108,7 @@ public class KundenController implements Observer {
                 txtOrt.getText(),
                 txtGeburtsdatum.getText()
         );
-        service.aendern(k);
+        service.kaendern(k);
     }
 
     @FXML
