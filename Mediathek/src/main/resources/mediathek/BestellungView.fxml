@@ -22,10 +22,10 @@
 
         <TextField fx:id="txtEingabe" promptText="Suche" layoutX="220.0" layoutY="59.0" prefWidth="200.0"/>
         <TextField fx:id="txtId" promptText="ID (beim Ändern)" layoutX="69.0" layoutY="729.0" prefHeight="26.0" prefWidth="156.0" />
-        <TextField fx:id="txtKundenId" promptText="Kunden-Id" layoutX="69.0" layoutY="756.0" prefHeight="26.0" prefWidth="156.0" />
-        <TextField fx:id="txtArtikelId" promptText="Artikel-id" layoutX="239.0" layoutY="729.0" prefHeight="26.0" prefWidth="156.0" />
-        <TextField fx:id="Von" promptText="Von" layoutX="239.0" layoutY="756.0" prefHeight="26.0" prefWidth="156.0" />
-        <TextField fx:id="Bis" promptText="Bis" layoutX="409.0" layoutY="729.0" prefHeight="26.0" prefWidth="156.0" />
+        <ChoiceBox fx:id="cbKundenId" layoutX="69.0" layoutY="756.0" prefHeight="26.0" prefWidth="156.0" />
+        <ChoiceBox fx:id="cbArtikelId" layoutX="239.0" layoutY="729.0" prefHeight="26.0" prefWidth="156.0" />
+        <TextField fx:id="txtVon" promptText="Von" layoutX="239.0" layoutY="756.0" prefHeight="26.0" prefWidth="156.0" />
+        <TextField fx:id="txtBis" promptText="Bis" layoutX="409.0" layoutY="729.0" prefHeight="26.0" prefWidth="156.0" />
 
         <Label layoutX="69.0" layoutY="59.0" text="Ausleihhistorie">
             <font>
