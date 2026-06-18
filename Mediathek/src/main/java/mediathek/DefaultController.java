@@ -1,12 +1,13 @@
 package mediathek;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
 
 public class DefaultController {
 

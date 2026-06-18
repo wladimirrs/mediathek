@@ -31,10 +31,10 @@
             </font>
         </Label>
 
-        <Button layoutX="430.0" layoutY="59.0" text="Einfügen" onAction="#einfuegen"/>
-        <Button layoutX="520.0" layoutY="59.0" text="Ändern" onAction="#aendern"/>
-        <Button layoutX="600.0" layoutY="59.0" text="Löschen" onAction="#loeschen"/>
-        <Button layoutX="680.0" layoutY="59.0" text="Suche" onAction="#suchen"/>
+        <Button layoutX="520.0" layoutY="59.0" text="Einfügen" prefWidth="76.0" onAction="#einfuegen"/>
+        <Button layoutX="600.0" layoutY="59.0" text="Ändern" prefWidth="76.0" onAction="#aendern"/>
+        <Button layoutX="680.0" layoutY="59.0" text="Löschen" prefWidth="76.0" onAction="#loeschen"/>
+        <Button layoutX="440.0" layoutY="59.0" text="Suche" prefWidth="76.0" onAction="#suchen"/>
 
     </children>
 </AnchorPane>

@@ -28,7 +28,7 @@
         <TextField fx:id="txtId" promptText="ID (beim Ändern)" layoutX="69.0" layoutY="729.0" prefHeight="26.0" prefWidth="156.0" />
         <TextField fx:id="txtNachname" promptText="Nachname" layoutX="69.0" layoutY="756.0" prefHeight="26.0" prefWidth="156.0" />
         <TextField fx:id="txtVorname" promptText="Vorname" layoutX="239.0" layoutY="729.0" prefHeight="26.0" prefWidth="156.0" />
-        <TextField fx:id="Mediatheknummer" promptText="Mediatheknummer" layoutX="239.0" layoutY="756.0" prefHeight="26.0" prefWidth="156.0" />
+        <TextField fx:id="txtMediatheknummer" promptText="Mediatheknummer" layoutX="239.0" layoutY="756.0" prefHeight="26.0" prefWidth="156.0" />
         <TextField fx:id="txtStrasse" promptText="Straße" layoutX="409.0" layoutY="729.0" prefHeight="26.0" prefWidth="156.0" />
         <TextField fx:id="txtHausnummer" promptText="Hausnummer" layoutX="409.0" layoutY="756.0" prefHeight="26.0" prefWidth="156.0" />
         <TextField fx:id="txtPlz" promptText="PLZ" layoutX="579.0" layoutY="729.0" prefHeight="26.0" prefWidth="156.0" />
@@ -41,10 +41,10 @@
             </font>
         </Label>
 
-        <Button layoutX="430.0" layoutY="59.0" text="Einfügen" onAction="#einfuegen"/>
-        <Button layoutX="520.0" layoutY="59.0" text="Ändern" onAction="#aendern"/>
-        <Button layoutX="600.0" layoutY="59.0" text="Löschen" onAction="#loeschen"/>
-        <Button layoutX="680.0" layoutY="59.0" text="Suche" onAction="#suchen"/>
+        <Button layoutX="520.0" layoutY="59.0" text="Einfügen" prefWidth="76.0" onAction="#einfuegen"/>
+        <Button layoutX="600.0" layoutY="59.0" text="Ändern" prefWidth="76.0" onAction="#aendern"/>
+        <Button layoutX="680.0" layoutY="59.0" text="Löschen" prefWidth="76.0" onAction="#loeschen"/>
+        <Button layoutX="440.0" layoutY="59.0" text="Suche" prefWidth="76.0" onAction="#suchen"/>
 
     </children>
 </AnchorPane>

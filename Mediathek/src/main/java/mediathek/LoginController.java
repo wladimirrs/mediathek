@@ -2,13 +2,15 @@ package mediathek;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
 
 public class LoginController {
 
@@ -35,17 +37,33 @@ public class LoginController {
     void loadRegister (ActionEvent event) { // zur Registrierung
         ViewLoader loader = new ViewLoader();
         Pane view = loader.loadView("RegisterView");
-        mainPane.getChildren().clear();
-        mainPane.getChildren().add(view);
+        if (view != null) {
+            mainPane.getChildren().clear();
+            mainPane.getChildren().add(view);
+
+            AnchorPane.setTopAnchor(view, 0.0);
+            AnchorPane.setBottomAnchor(view, 0.0);
+            AnchorPane.setLeftAnchor(view, 0.0);
+            AnchorPane.setRightAnchor(view, 0.0);
+        }
     }
+
 
     @FXML
     void loadLogin (ActionEvent event) {    // zum Login
         ViewLoader loader = new ViewLoader();
         Pane view = loader.loadView("LoginView");
-        mainPane.getChildren().clear();
-        mainPane.getChildren().add(view);
+        if (view != null) {
+            mainPane.getChildren().clear();
+            mainPane.getChildren().add(view);
+
+            AnchorPane.setTopAnchor(view, 0.0);
+            AnchorPane.setBottomAnchor(view, 0.0);
+            AnchorPane.setLeftAnchor(view, 0.0);
+            AnchorPane.setRightAnchor(view, 0.0);
+        }
     }
+
 
     @FXML
     void loadAusfuehren (ActionEvent event) {
