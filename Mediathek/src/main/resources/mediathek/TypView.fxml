@@ -23,7 +23,7 @@
         <TextField fx:id="txtId" promptText="ID (beim Ändern)" layoutX="69.0" layoutY="729.0" prefHeight="26.0" prefWidth="156.0" />
         <TextField fx:id="txtBezeichnung" promptText="Bezeichnung" layoutX="69.0" layoutY="756.0" prefHeight="26.0" prefWidth="156.0" />
         <TextField fx:id="txtAusleihdauer" promptText="Ausleihdauer" layoutX="239.0" layoutY="729.0" prefHeight="26.0" prefWidth="156.0" />
-        <TextField fx:id="Umfang" promptText="Umfang" layoutX="239.0" layoutY="756.0" prefHeight="26.0" prefWidth="156.0" />
+        <TextField fx:id="txtUmfang" promptText="Umfang" layoutX="239.0" layoutY="756.0" prefHeight="26.0" prefWidth="156.0" />
 
         <Label layoutX="69.0" layoutY="59.0" text="Artikeltypen">
             <font>
