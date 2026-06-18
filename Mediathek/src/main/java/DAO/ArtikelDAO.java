@@ -22,15 +22,15 @@ public class ArtikelDAO {
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Typ typ = new Typ(
-                        rs.getString("bezeichnung"),
-                        rs.getInt("umfang")
+                        rs.getString("bezeichnung")
                 );
                 Artikel a = new Artikel(
                         rs.getInt("id"),
                         typ,
                         rs.getString("titel"),
                         rs.getBoolean("abachtzehn"),
-                        rs.getString("genre")
+                        rs.getString("genre"),
+                        rs.getInt("umfang")
                 );
                 list.add(a);
             }
@@ -54,13 +54,14 @@ public class ArtikelDAO {
 
 
     public static void insert (Artikel a) { // Einfügen
-        String sql = "INSERT INTO artikel VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO artikel VALUES (?, ?, ?, ?, ?)";
         try (Connection con = DB.getInstance().getConnection();
         PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, a.getTyp().getId());
             ps.setString(2, a.getTitel());
             ps.setBoolean(3, a.isAbachtzehn());
             ps.setString(4, a.getGenre());
+            ps.setInt(5, a.getUmfang());
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Fehlerhaftes Einfügen: " + e.getMessage());
@@ -69,13 +70,15 @@ public class ArtikelDAO {
 
 
     public static void update  (Artikel a) {
-        String sql = "UPDATE artikel SET typ=?, titel=?, abachtzehn=?, genre =? WHERE id=?";
+        String sql = "UPDATE artikel SET typ=?, titel=?, abachtzehn=?, genre =?, umfang =? WHERE id=?";
         try (Connection con = DB.getInstance().getConnection();
         PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, a.getTyp().getId());
             ps.setString(2, a.getTitel());
             ps.setBoolean(3, a.isAbachtzehn());
             ps.setString(4, a.getGenre());
+            ps.setInt(5, a.getUmfang());
+            ps.setInt(6, a.getId());
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Fehlerhaftes Ändern: " + e.getMessage());

@@ -28,13 +28,11 @@ public class TypenController implements Observer {
     @FXML private TextField txtId;
     @FXML private TextField txtBezeichnung;
     @FXML private TextField txtAusleihdauer;
-    @FXML private TextField txtUmfang;
 
     @FXML private TableView<Typ> tblTyp;
     @FXML private TableColumn<Typ, Integer> colId;
     @FXML private TableColumn<Typ, String> colBezeichnung;
     @FXML private TableColumn<Typ, Integer> colAusleihdauer;
-    @FXML private TableColumn<Typ, Integer> colUmfang;
 
 
     private ObservableList<Typ> daten;
@@ -44,7 +42,6 @@ public class TypenController implements Observer {
         colId.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getId()).asObject());
         colBezeichnung.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getBezeichnung()));
         colAusleihdauer.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getAusleihdauer()).asObject());
-        colUmfang.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getUmfang()).asObject());
         service.registriereObserver(this);
         daten = FXCollections.observableArrayList(TypenDAO.getAll());
         tblTyp.setItems(daten);
@@ -61,8 +58,7 @@ public class TypenController implements Observer {
     void einfuegen(ActionEvent event) { // insert
         Typ t = new  Typ(
                 txtBezeichnung.getText(),
-                Integer.parseInt(txtAusleihdauer.getText()),
-                Integer.parseInt(txtUmfang.getText())
+                Integer.parseInt(txtAusleihdauer.getText())
         );
         service.teinfuegen(t);
     }
@@ -80,8 +76,7 @@ public class TypenController implements Observer {
         Typ t = new Typ(
                 Integer.parseInt(txtId.getText()),
                 txtBezeichnung.getText(),
-                Integer.parseInt(txtAusleihdauer.getText()),
-                Integer.parseInt(txtUmfang.getText())
+                Integer.parseInt(txtAusleihdauer.getText())
         );
         service.taendern(t);
     }
@@ -98,8 +93,7 @@ public class TypenController implements Observer {
                         .filter(m ->
                                 (m.getId() != 0 && String.valueOf(m.getId()).contains(query)) ||
                                         (m.getBezeichnung() != null && m.getBezeichnung().toLowerCase().contains(query)) ||
-                                        (m.getAusleihdauer() != 0 && String.valueOf(m.getAusleihdauer()).contains(query)) ||
-                                        (m.getUmfang() != 0 && String.valueOf(m.getUmfang()).contains(query))                        )
+                                        (m.getAusleihdauer() != 0 && String.valueOf(m.getAusleihdauer()).contains(query)))
                         .toList()
         );
         tblTyp.setItems(gefiltert);

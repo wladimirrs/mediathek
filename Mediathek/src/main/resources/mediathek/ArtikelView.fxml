@@ -16,6 +16,7 @@
                 <TableColumn fx:id="colTitel" text="Titel" prefWidth="80"/>
                 <TableColumn fx:id="colAbachtzehn" text="Ab 18" prefWidth="80"/>
                 <TableColumn fx:id="colGenre" text="Genre" prefWidth="80"/>
+                <TableColumn fx:id="colUmfang" text="Umfang" prefWidth="80"/>
             </columns>
 
         </TableView>
@@ -26,6 +27,7 @@
         <TextField fx:id="txtTitel" promptText="Titel" layoutX="239.0" layoutY="729.0" prefHeight="26.0" prefWidth="156.0" />
         <TextField fx:id="txtAbachtzehn" promptText="Ab 18" layoutX="239.0" layoutY="756.0" prefHeight="26.0" prefWidth="156.0" />
         <TextField fx:id="txtGenre" promptText="Genre" layoutX="409.0" layoutY="729.0" prefHeight="26.0" prefWidth="156.0" />
+        <TextField fx:id="txtUmfang" promptText="Umfang" layoutX="409.0" layoutY="756.0" prefHeight="26.0" prefWidth="156.0" />
 
         <Label layoutX="69.0" layoutY="59.0" text="Artikel zum Ausleihen">
             <font>

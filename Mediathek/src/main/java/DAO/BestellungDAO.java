@@ -30,7 +30,8 @@ public class BestellungDAO {
                         rs.getString("vorname")
                 );
                 Artikel artikel = new Artikel(
-                        rs.getString("titel")
+                        rs.getString("titel"),
+                        rs.getInt("umfang")
                 );
                 Bestellung b = new Bestellung(
                         rs.getInt("id"),

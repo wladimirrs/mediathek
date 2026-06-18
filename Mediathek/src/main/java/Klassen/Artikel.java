@@ -7,25 +7,29 @@ public class Artikel {
     private String titel;
     private boolean abachtzehn;
     private String genre;
+    private int umfang;
 
                                 // Konstruktoren
-    public Artikel (int id, Typ typ, String titel, boolean abachtzehn, String genre) {
+    public Artikel (int id, Typ typ, String titel, boolean abachtzehn, String genre, int  umfang) {
         this.id = id;
         this.typ = typ;
         this.titel = titel;
         this.abachtzehn = abachtzehn;
         this.genre = genre;
+        this.umfang = umfang;
     }
 
-    public Artikel (Typ typ, String titel, boolean abachtzehn, String genre) {
+    public Artikel (Typ typ, String titel, boolean abachtzehn, String genre, int  umfang) {
         this.typ = typ;
         this.titel = titel;
         this.abachtzehn = abachtzehn;
         this.genre = genre;
+        this.umfang = umfang;
     }
 
-    public Artikel (String titel) {
+    public Artikel (String titel, int  umfang) {
         this.titel = titel;
+        this.umfang = umfang;
     }
 
     public Artikel () {}
@@ -54,6 +58,8 @@ public class Artikel {
         return genre;
     }
 
+    public int getUmfang() { return umfang; }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -74,10 +80,22 @@ public class Artikel {
         this.genre = genre;
     }
 
+    public void setUmfang(int umfang) { this.umfang = umfang; }
+
 
     @Override
     public String toString() {
-        return titel;
+        if (id == 1) {
+            return titel + ", " + umfang + " Minuten";
+        } else if (id == 2) {
+            return titel + ", " + umfang + " Seiten";
+        } else if (id == 3) {
+            return titel + ", " + umfang + " Minuten";
+        } else  if (id == 4) {
+            return titel + ", " + umfang + " Stunden";
+        } else {
+            return titel + ", " + umfang + " Minuten";
+        }
     }
 
 }

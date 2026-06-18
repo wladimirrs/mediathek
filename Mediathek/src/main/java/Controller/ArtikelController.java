@@ -34,6 +34,7 @@ public class ArtikelController implements Observer {
     @FXML private TextField txtTitel;
     @FXML private TextField txtAbachtzehn;
     @FXML private TextField txtGenre;
+    @FXML private TextField txtUmfang;
 
     @FXML private TableView<Artikel> tblArtikel;
     @FXML private TableColumn<Artikel, Integer> colId;
@@ -41,6 +42,7 @@ public class ArtikelController implements Observer {
     @FXML private TableColumn<Artikel, String> colTitel;
     @FXML private TableColumn<Artikel, Boolean> colAbachtzehn;
     @FXML private TableColumn<Artikel, String> colGenre;
+    @FXML private TableColumn<Artikel, Integer> colUmfang;
 
 
     private ObservableList<Artikel> daten;
@@ -53,6 +55,7 @@ public class ArtikelController implements Observer {
         colTitel.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getTitel()));
         colAbachtzehn.setCellValueFactory(data -> new SimpleBooleanProperty(data.getValue().isAbachtzehn()));
         colGenre.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getGenre()));
+        colUmfang.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getUmfang()).asObject());
         service.registriereObserver(this);
         daten = FXCollections.observableArrayList(ArtikelDAO.getAll());
         tblArtikel.setItems(daten);
@@ -71,7 +74,8 @@ public class ArtikelController implements Observer {
                 cbTyp.getValue(),
                 txtTitel.getText(),
                 Boolean.parseBoolean(txtAbachtzehn.getText()),
-                txtGenre.getText()
+                txtGenre.getText(),
+                Integer.parseInt(txtUmfang.getText())
         );
         service.aeinfuegen(a);
     }
@@ -91,7 +95,8 @@ public class ArtikelController implements Observer {
                 cbTyp.getValue(),
                 txtTitel.getText(),
                 Boolean.parseBoolean(txtAbachtzehn.getText()),
-                txtGenre.getText()
+                txtGenre.getText(),
+                Integer.parseInt(txtUmfang.getText())
         );
         service.aaendern(a);
     }

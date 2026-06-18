@@ -22,8 +22,7 @@ public class TypenDAO {
                 Typ t = new Typ(
                         rs.getInt("id"),
                         rs.getString("bezeichnung"),
-                        rs.getInt("ausleihdauer"),
-                        rs.getInt("umfang")
+                        rs.getInt("ausleihdauer")
                 );
                 list.add(t);
             }
@@ -48,12 +47,11 @@ public class TypenDAO {
 
 
     public static void insert (Typ t) { // Einfügen
-        String sql = "INSERT INTO typen VALUES (?, ?, ?)";
+        String sql = "INSERT INTO typen VALUES (?, ?)";
         try (Connection con = DB.getInstance().getConnection();
         PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, t.getBezeichnung());
             ps.setInt(2, t.getAusleihdauer());
-            ps.setInt(3, t.getUmfang());
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Fehlerhaftes Einfügen: " + e.getMessage());
@@ -62,13 +60,12 @@ public class TypenDAO {
 
 
     public static void update (Typ t) {
-        String sql = "UPDATE typen SET bezeichnung =?, ausleihdauer=?, umfang=? WHERE id = ?";
+        String sql = "UPDATE typen SET bezeichnung =?, ausleihdauer=? WHERE id = ?";
         try (Connection con = DB.getInstance().getConnection();
         PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, t.getBezeichnung());
             ps.setInt(2, t.getAusleihdauer());
-            ps.setInt(3, t.getUmfang());
-            ps.setInt(4, t.getId());
+            ps.setInt(3, t.getId());
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Fehlerhaftes Ändern: " + e.getMessage());
