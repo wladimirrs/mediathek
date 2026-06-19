@@ -47,7 +47,7 @@ public class TypenDAO {
 
 
     public static void insert (Typ t) { // Einfügen
-        String sql = "INSERT INTO typen VALUES (?, ?)";
+        String sql = "INSERT INTO typen (bezeichnung, ausleihdauer) VALUES (?, ?)";
         try (Connection con = DB.getInstance().getConnection();
         PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, t.getBezeichnung());

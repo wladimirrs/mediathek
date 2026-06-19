@@ -15,7 +15,7 @@ public class ArtikelDAO {
     public static ArrayList<Artikel> getAll() {  // Suche
         ArrayList<Artikel> list = new ArrayList<>();
         String sql = "SELECT a.*, " +
-                "t.bezeichnung, t.umfang" +
+                "t.bezeichnung" +
                 " FROM artikel a LEFT JOIN typen t ON a.typ = t.id ";
         try (Connection con = DB.getInstance().getConnection();
              PreparedStatement ps = con.prepareStatement(sql);
@@ -54,7 +54,7 @@ public class ArtikelDAO {
 
 
     public static void insert (Artikel a) { // Einfügen
-        String sql = "INSERT INTO artikel VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO artikel (typ, titel, abachtzehn, genre, umfang) VALUES (?, ?, ?, ?, ?)";
         try (Connection con = DB.getInstance().getConnection();
         PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, a.getTyp().getId());

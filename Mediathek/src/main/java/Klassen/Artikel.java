@@ -85,17 +85,7 @@ public class Artikel {
 
     @Override
     public String toString() {
-        if (id == 1) {
-            return titel + ", " + umfang + " Minuten";
-        } else if (id == 2) {
-            return titel + ", " + umfang + " Seiten";
-        } else if (id == 3) {
-            return titel + ", " + umfang + " Minuten";
-        } else  if (id == 4) {
-            return titel + ", " + umfang + " Stunden";
-        } else {
-            return titel + ", " + umfang + " Minuten";
-        }
+        return titel;
     }
 
 }

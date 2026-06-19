@@ -36,7 +36,7 @@ public class Kunde {
         this.geburtsdatum = geburtsdatum;
     }
 
-    public Kunde(String nachname, String vorname, String mediatheknummer) {
+    public Kunde(String mediatheknummer, String nachname, String vorname) {
         this.mediatheknummer = mediatheknummer;
         this.nachname = nachname;
         this.vorname = vorname;

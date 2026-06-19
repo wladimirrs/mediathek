@@ -47,13 +47,13 @@ public class BestellungController implements Observer {
     private final ModelService service = new ModelService();
     @FXML
     public void initialize() {
-        cbKundenId.setItems(FXCollections.observableArrayList(KundenDAO.getAll()));
-        cbArtikelId.setItems(FXCollections.observableArrayList(ArtikelDAO.getAll()));
         colId.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getId()).asObject());
         colKundenId.setCellValueFactory(data -> new SimpleObjectProperty<>(data.getValue().getKunde()));
         colArtikelId.setCellValueFactory(data -> new SimpleObjectProperty<>(data.getValue().getArtikel()));
         colVon.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getVon()));
         colBis.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getBis()));
+        cbKundenId.setItems(FXCollections.observableArrayList(KundenDAO.getAll()));
+        cbArtikelId.setItems(FXCollections.observableArrayList(ArtikelDAO.getAll()));
         service.registriereObserver(this);
         daten = FXCollections.observableArrayList(BestellungDAO.getAll());
         tblBestellung.setItems(daten);

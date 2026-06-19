@@ -49,13 +49,50 @@ public class ArtikelController implements Observer {
     private final ModelService service = new ModelService();
     @FXML
     public void initialize() {
-        cbTyp.setItems(FXCollections.observableArrayList(TypenDAO.getAll()));
         colId.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getId()).asObject());
         colTyp.setCellValueFactory(data -> new SimpleObjectProperty<>(data.getValue().getTyp()));
         colTitel.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getTitel()));
         colAbachtzehn.setCellValueFactory(data -> new SimpleBooleanProperty(data.getValue().isAbachtzehn()));
+        colAbachtzehn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(Boolean item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty || item == null ? null : (item ? "ab 18" : "-"));
+            }
+        });
         colGenre.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getGenre()));
         colUmfang.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getUmfang()).asObject());
+        colUmfang.setCellFactory(column -> new TableCell<Artikel, Integer>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null || getTableRow() == null || getTableRow().getItem() == null) {
+                    setText(null);
+                    return;
+                }
+                Artikel artikel = getTableRow().getItem();
+                String typ = String.valueOf(artikel.getTyp());
+                String ufg = String.valueOf(artikel.getUmfang());
+                if ((typ.equalsIgnoreCase("Film") || typ.equalsIgnoreCase("Brettspiel")) && (ufg.endsWith("01") || ufg.equalsIgnoreCase("1"))) {
+                    setText(item + " Minute");
+                } else if (typ.equalsIgnoreCase("Film") || typ.equalsIgnoreCase("Brettspiel")) {
+                    setText(item + " Minuten");
+                } else if (typ.equalsIgnoreCase("Buch") && (ufg.endsWith("01") || ufg.equalsIgnoreCase("1"))) {
+                    setText(item + " Seite");
+                } else if (typ.equalsIgnoreCase("Buch")) {
+                    setText(item + " Seiten");
+                } else if (typ.equalsIgnoreCase("Videospiel") &&  (ufg.endsWith("01") || ufg.equalsIgnoreCase("1"))) {
+                    setText(item + " Stunde");
+                } else if (typ.equalsIgnoreCase("Videospiel")) {
+                    setText(item + " Stunden");
+                } else if (ufg.endsWith("01") || ufg.equalsIgnoreCase("1")) {
+                    setText(item + " Minute");
+                } else {
+                    setText(item + " Minuten");
+                }
+            }
+        });
+        cbTyp.setItems(FXCollections.observableArrayList(TypenDAO.getAll()));
         service.registriereObserver(this);
         daten = FXCollections.observableArrayList(ArtikelDAO.getAll());
         tblArtikel.setItems(daten);
@@ -115,7 +152,8 @@ public class ArtikelController implements Observer {
                                         (m.getTyp() != null && String.valueOf(m.getTyp()).contains(query)) ||
                                         (m.getTitel() != null && m.getTitel().toLowerCase().contains(query)) ||
                                         (String.valueOf(m.isAbachtzehn()).contains(query)) ||
-                                        (m.getGenre() != null && m.getGenre().toLowerCase().contains(query))
+                                        (m.getGenre() != null && m.getGenre().toLowerCase().contains(query)) ||
+                                        (m.getUmfang() != 0 && String.valueOf(m.getUmfang()).contains(query))
                         )
                         .toList()
         );

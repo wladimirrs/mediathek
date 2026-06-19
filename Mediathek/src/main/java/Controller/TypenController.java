@@ -42,6 +42,19 @@ public class TypenController implements Observer {
         colId.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getId()).asObject());
         colBezeichnung.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getBezeichnung()));
         colAusleihdauer.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getAusleihdauer()).asObject());
+        colAusleihdauer.setCellFactory(column -> new TableCell<Typ, Integer>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {    // 7 Tage statt 7
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else if (item < 2) {
+                    setText(item + " Tag");
+                } else {
+                    setText(item + " Tage");
+                }
+            }
+        });
         service.registriereObserver(this);
         daten = FXCollections.observableArrayList(TypenDAO.getAll());
         tblTyp.setItems(daten);

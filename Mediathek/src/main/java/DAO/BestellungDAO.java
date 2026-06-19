@@ -17,7 +17,7 @@ public class BestellungDAO {
         ArrayList<Bestellung> list = new ArrayList<>();
         String sql = "SELECT b.*, " +
         "k.mediatheknummer, k.nachname, k.vorname, " +
-                "a.titel" +
+                "a.titel, a.umfang " +
                 " FROM bestellungen b LEFT JOIN kunden k ON b.kunden_id = k.id " +
                 "LEFT JOIN artikel a ON b.artikel_id = a.id ";
         try (Connection con = DB.getInstance().getConnection();
@@ -61,7 +61,7 @@ public class BestellungDAO {
 
 
     public static void insert (Bestellung b) {  // Einfügen
-        String sql = "INSERT INTO bestellungen VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO bestellungen (kunden_id, artikel_id, von, bis) VALUES (?, ?, ?, ?)";
         try (Connection con = DB.getInstance().getConnection();
         PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, b.getKunde().getId());
